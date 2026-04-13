@@ -6,9 +6,12 @@ let R;
 let sunX = 700;
 let C;
 let C2, C3;
-let cloudX = 458;
-let cloud2X = 600; 
-let cloud3X = 800;
+let cloudX = -150;
+let cloud2X = -250; 
+let cloud3X = -100;
+let E1; 
+let E2;
+let E3;
 var speed = 70;
  
 //grass image
@@ -22,6 +25,9 @@ var speed = 70;
     F2 = loadImage ("img1/Flower2.png");
     R = loadImage ("img1/Rainbow.png"); 
     L = loadImage ("img2/Leaf.png");
+    E1 = loadImage ("img1/Face1.png");
+    E2 = loadImage ("img1/Face2.png");
+    E3 = loadImage ("img1/Face3.png");
     
   }
 function setup() {
@@ -53,19 +59,30 @@ function draw() {
   image(F1, 750, 575, 250, 248);
   image (F2, 300, 670, 150, 148);
   image (F2, 1200, 670, 150, 148);
+
+  //face click location
+  image (E1,910, 663, 60, 60 )
+  image (E2, 877, 588, 58, 58);
+  image (E3, 770, 696, 50, 50);
+
+  if (mouseIsPressed) {
+    image(E1, E2, E3);
+  } else {
+   image(F1, 750, 575, 250, 248);
+}
   
   //sun location
   image (S, 40, 40, 250, 250);
   
-   cloudX = cloudX + 1;
-  cloud2X = cloud2X + 1;
-  cloud3X = cloud3X + 10;
+   cloudX = cloudX + 3;
+  cloud2X = cloud2X + 2;
+  cloud3X = cloud3X + 6;
   
   //lines 79-88 below reset the clouds to come from 300 or 200 pixels to the left of zero (well off screen) which gives the illusion of floating
     if (cloudX > windowWidth) {
-       cloudX = -300;
+       cloudX = -600;
     }
-      cloudX = -300;
+  
     if (cloud2X > windowWidth) {    
       cloud2X = -300;
     }
@@ -77,8 +94,8 @@ function draw() {
  
   //cloud location + animation
   image (C, cloudX, 30, 300, 150); 
-  image (C2, cloud2X - 20, 150, 300, 150);
-  image (C3, cloud3X + 500, 160, 200, 100);
+  image (C2, cloud2X, 150, 300, 150);
+  image (C3, cloud3X, 160, 200, 100);
 
 
   
