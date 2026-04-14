@@ -12,7 +12,14 @@ let cloud3X = -100;
 let E1; 
 let E2;
 let E3;
+let M;
 var speed = 70;
+//this is the mouse trail variables
+var num = 30;
+var mx = []; 
+var my = []; 
+let star;
+ 
  
 //grass image
   function preload() {
@@ -23,17 +30,23 @@ var speed = 70;
    C3 = loadImage ('img1/Cloud3.png');
     F1 = loadImage ("img1/Flower1.png");
     F2 = loadImage ("img1/Flower2.png");
-    //R = loadImage ("img1/Rainbow(2).png"); 
+    R = loadImage ("img1/Rainbow.png"); 
    // L = loadImage ("img2/Leaf.png");
     E1 = loadImage ("img1/Face1.png");
     E2 = loadImage ("img1/Face2.png");
     E3 = loadImage ("img1/Face3.png");
+    M = loadImage ("img1/Moon.png");
+    star = loadImage ("img1/Star.png");
     
   }
 function setup() {
   createCanvas(windowWidth, windowHeight);
   
- 
+ let btn = createButton('Next Page');
+  btn.position(1402, 741);
+  btn.mousePressed(() => {
+    window.location.href = 'page3.html';
+  });
   
 }
 
@@ -42,7 +55,20 @@ function draw() {
  background('#23d2fd');
  frameRate(60);
 
-
+ //sun location
+  image (S, 40, 40, 250, 250);
+  
+   if (mouseX < 240 && mouseX > 40 && mouseY < 240 && mouseY > 40) {
+  background('#142e93');
+    image (M, 70, 70, 170, 170); 
+  image (star, 500, 141, 50, 50);
+    image (star, 884, 136, 50, 50);
+     image (star, 594, 250, 70, 70);
+     image (star, 1135, 158, 70, 70);
+    image (star, 966, 288, 30, 30);
+     image (star, 288, 271, 30, 30);
+     image (star, 1374, 286, 50, 50);
+  } 
   //x,y coordinates
   
   frameRate(12);
@@ -71,8 +97,7 @@ function draw() {
    image(F1, 750, 575, 250, 248);
 }
   
-  //sun location
-  image (S, 40, 40, 250, 250);
+  
   
    cloudX = cloudX + 3;
   cloud2X = cloud2X + 2;
@@ -119,10 +144,20 @@ function draw() {
   // }
 
 //rainbow mouse cursor
-  // if (mouseIsPressed === true) {
-  //   cursor('img1/Rainbow.png', 8, 8); 
-  // } else {
-  //   cursor('img1/Rainbow.png');
+  if (mouseIsPressed === true) {
+    cursor('img1/Rainbow.png', 8, 8); 
+  } else {
+    cursor('img1/Rainbow.png');
   
 }
-//}
+ //mouse trail
+ var array_pos = (frameCount /'.5') % num; 
+  mx[array_pos] = mouseX; 
+  my[array_pos] = mouseY; 
+
+
+  for (var i = 0; i < num; i++) {
+    var index = (array_pos + 1 + i) % num; 
+    image(R, mx[index], my[index], i, i); 
+  }
+}

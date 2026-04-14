@@ -4,6 +4,10 @@ let lineXone = 0;
 let lineYone = 0;
 let L;
 let B;
+//this is the mouse trail variables
+var num = 40;
+var mx = []; 
+var my = []; 
 
 
 function preload () {
@@ -55,5 +59,14 @@ function draw() {
     cursor('img2/Leaf.png');
   
 }
- 
+ //mouse trail
+ var array_pos = (frameCount /'.5') % num; 
+  mx[array_pos] = mouseX; 
+  my[array_pos] = mouseY; 
+
+
+  for (var i = 0; i < num; i++) {
+    var index = (array_pos + 1 + i) % num; 
+    image(L, mx[index], my[index], i, i); 
+  }
 }
