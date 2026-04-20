@@ -19,6 +19,10 @@ var num = 30;
 var mx = []; 
 var my = []; 
 let star;
+let L;
+let x = 200;
+let y = 200;
+let img;
  
  
 //grass image
@@ -37,6 +41,8 @@ let star;
     E3 = loadImage ("img1/Face3.png");
     M = loadImage ("img1/Moon.png");
     star = loadImage ("img1/Star.png");
+    L = loadImage ("img1/Lego1.png");
+    img = loadImage ("img1/butter.png");
     
   }
 function setup() {
@@ -47,6 +53,7 @@ function setup() {
   btn.mousePressed(() => {
     window.location.href = 'page3.html';
   });
+  
   
 }
 
@@ -75,29 +82,32 @@ function draw() {
    textSize(24);
   text("X: "+mouseX, 0, height/4);
   text("Y: "+mouseY, 0, height/2);
+
+ 
+
   
   //grass location
-  image (G1, 1422, 660, 800, 200);
-  image (G1, 700, 660, 800, 200);
-    image (G1, 0, 660, 800, 200);
+  image (G1, 1422, 700, 800, 200);
+  image (G1, 700, 700, 800, 200);
+    image (G1, 0, 700, 800, 200);
   
   //flowers location
-  image(F1, 750, 575, 250, 248);
-  image (F2, 300, 670, 150, 148);
-  image (F2, 1200, 670, 150, 148);
+  image(F1, 750, 615, 250, 248);
+  image (F2, 300, 680, 150, 148);
+  image (F2, 1200, 680, 150, 148);
 
   //face click location
-  image (E1,910, 663, 60, 60 )
-  image (E2, 877, 588, 58, 58);
-  image (E3, 770, 696, 50, 50);
+  image (E1,910, 700, 60, 60 )
+  image (E2, 877, 630, 58, 58);
+  image (E3, 770, 733, 50, 50);
 
   if (mouseIsPressed) {
     image(E1, E2, E3);
   } else {
-   image(F1, 750, 575, 250, 248);
+   image(F1, 750, 615, 250, 248);
 }
-  
-  
+  //Lego character
+  image (L, 98, 550, 200, 300);
   
    cloudX = cloudX + 3;
   cloud2X = cloud2X + 2;
@@ -122,6 +132,10 @@ function draw() {
   image (C2, cloud2X, 150, 300, 150);
   image (C3, cloud3X, 160, 200, 100);
 
+  x += (mouseX - x) * 0.05;
+  y += (mouseY - y) * 0.05;
+
+  image(img, x, y, 50, 50);
 
   
   
@@ -161,3 +175,15 @@ function draw() {
     image(R, mx[index], my[index], i, i); 
   }
 }
+
+
+// function drawbutter() {
+//   let d = dist(mouseX, mouseY, x, y);
+
+//   if (d < 100) {
+//     x += (x - mouseX) * 0.05;
+//     y += (y - mouseY) * 0.05;
+//   }
+
+//   image(img, x, y, 30, 30);
+// }
