@@ -38,7 +38,7 @@ function preload() {
   C3 = loadImage("img1/Cloud3.png");
   F1 = loadImage("img1/Flower1.png");
   F2 = loadImage("img1/Flower2.png");
-  R = loadImage("img1/Rainbow.PNG");
+  R = loadImage("img1/rainbow.png");
   // L = loadImage ("img2/Leaf.png");
   E1 = loadImage("img1/Face1.png");
   E2 = loadImage("img1/Face2.png");
@@ -134,9 +134,9 @@ clouds();
   
   //rainbow mouse cursor
   if (mouseIsPressed === true) {
-    cursor("img1/Rainbow.PNG", 8, 8);
+    cursor("img1/rainbow.png", 8, 8);
   } else {
-    cursor("img1/Rainbow.PNG");
+    cursor("img1/rainbow.png");
   }
   //mouse trail for rainbow cursor
   var array_pos = (frameCount / ".5") % num;
