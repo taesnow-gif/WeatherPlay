@@ -52,6 +52,8 @@ function setup() {
   ratio = min(windowWidth / design_w, windowHeight / design_h);
   createCanvas(windowWidth, windowHeight);
 
+  noCursor();
+  
   //   //code to the next page of the site
   btn = createButton("Next ➜");
 
