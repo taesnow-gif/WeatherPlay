@@ -256,4 +256,5 @@ function windowResized() {
   flower();
   lego();
   clouds();
+  noCursor();
 }
